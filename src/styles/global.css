@@ -1,3 +1,35 @@
+/* Futura 字体定义 */
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura.woff2') format('woff2');
+  font-weight: normal;  /* 400 */
+  font-style: normal;
+  font-display: swap;   /* 重要：提升加载性能 */
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura-Bold.woff2') format('woff2');
+  font-weight: bold;    /* 700 */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 如果有斜体版本，也添加 */
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/Futura-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@theme inline {
+  --font-sans: "Futura", "Futura-Medium", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+}
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
