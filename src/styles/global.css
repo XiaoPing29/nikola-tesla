@@ -2,5 +2,5 @@
 @plugin '@tailwindcss/typography';
 
 @theme inline {
-	--font-sans: var(--font-geist);
+  --font-sans: "Montserrat", "Futura", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
 }
