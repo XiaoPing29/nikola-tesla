@@ -1,5 +1,5 @@
 /* Futura 字体定义 */
-@font-face {
+/*@font-face {
   font-family: 'Futura';
   src: url('/fonts/Futura.woff2') format('woff2');
   font-weight: normal;  /* 400 */
@@ -35,4 +35,27 @@
 
 @theme inline {
   --font-sans: "Montserrat", "Futura", "Century Gothic", "Trebuchet MS", Arial, sans-serif;
+}
+*/
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #e3c7a5, #c7d5d8, #9faeb5, #d6b89e, #c2b8ad);
+  background-size: 400% 400%;
+  animation: gradientFlow 18s ease-in-out infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) brightness(1.05);
 }
