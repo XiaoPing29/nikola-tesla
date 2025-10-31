@@ -3,26 +3,14 @@ import H1 from "../components/h1.astro";
 import Link from "../components/link.astro";
 import Navigation from "../components/navigation";
 import RootLayout from "../layouts/RootLayout.astro";
-import WarpBackground from "../components/warp-background";
 import AvailableForWork from "../components/available.astro";
 ---
 
 <RootLayout>
 	<main>
 		<div class="group relative w-full min-h-dvh flex items-center justify-center">
-			<div class="absolute w-full h-dvh -z-10">
-				<WarpBackground
-					color1="#09090b"
-					color2="#27272a"
-					color3="#52525b"
-					speed={0.6}
-					swirl={0.5}
-					swirlIterations={10}
-					shapeScale={0.3}
-					client:load
-				/>
-			</div>
-
+			<!-- 删除整个 WarpBackground 组件部分 -->
+			
 			<div class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10">
 				<div>
 					<H1 size="large"> Aurryan <br /> Consulting </H1>
@@ -47,12 +35,14 @@ import AvailableForWork from "../components/available.astro";
 		</div>
 	</main>
 </RootLayout>
-<!-- 在这里添加样式代码 -->
+
 <style is:global>
 /* 强制覆盖所有现有样式 */
-html body {
+html, body {
   margin: 0 !important;
+  padding: 0 !important;
   height: 100vh !important;
+  width: 100% !important;
   overflow: hidden !important;
   background: linear-gradient(-45deg, #e3c7a5, #c7d5d8, #9faeb5, #d6b89e, #c2b8ad) !important;
   background-size: 400% 400% !important;
