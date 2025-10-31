@@ -9,7 +9,7 @@ import AvailableForWork from "../components/available.astro";
 <RootLayout>
 	<main>
 		<div class="group relative w-full min-h-dvh flex items-center justify-center">
-			<!-- 删除整个 WarpBackground 组件部分 -->
+			<!-- 删除 WarpBackground 组件 -->
 			
 			<div class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10">
 				<div>
@@ -37,28 +37,60 @@ import AvailableForWork from "../components/available.astro";
 </RootLayout>
 
 <style is:global>
-/* 强制覆盖所有现有样式 */
+/* 强制移除所有深色背景并应用渐变 */
 html, body {
   margin: 0 !important;
   padding: 0 !important;
   height: 100vh !important;
   width: 100% !important;
   overflow: hidden !important;
+}
+
+/* 特别针对 bg-zinc-900 类 */
+body.bg-zinc-900,
+body[class*="bg-"],
+main[class*="bg-"],
+div[class*="bg-"] {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* 应用渐变背景 */
+body {
   background: linear-gradient(-45deg, #e3c7a5, #c7d5d8, #9faeb5, #d6b89e, #c2b8ad) !important;
   background-size: 400% 400% !important;
   animation: gradientFlow 18s ease-in-out infinite !important;
 }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50% !important; }
-  50% { background-position: 100% 50% !important; }
-  100% { background-position: 0% 50% !important; }
+/* 确保主要内容区域透明 */
+.min-h-dvh,
+.w-full,
+.relative,
+.absolute {
+  background: transparent !important;
 }
 
-.overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(25px) brightness(1.05) !important;
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 毛玻璃效果覆盖 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px) brightness(1.05);
+  z-index: 1;
+}
+
+/* 确保内容在毛玻璃层之上 */
+.z-10 {
+  z-index: 20 !important;
 }
 </style>
